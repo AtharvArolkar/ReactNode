@@ -17,7 +17,7 @@ const productReducer = (
       return state;
     }
     case "INIT": {
-      return { ...state, data: payload.data };
+      return { data: payload.data, products: [] };
     }
     case "INC": {
       const proInCart = products.find(

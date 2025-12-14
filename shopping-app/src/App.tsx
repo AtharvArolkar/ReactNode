@@ -1,6 +1,7 @@
 import "./App.css";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import ProductsList from "./components/ProductsList";
+import ViewOrder from "./components/ViewOrder";
 
 function App() {
   const navigate = useNavigate();
@@ -23,6 +24,7 @@ function App() {
           }
         />
         <Route path="/products" element={<ProductsList />} />
+        <Route path="/view-order" element={<ViewOrder />} />
       </Routes>
     </>
   );
