@@ -146,7 +146,7 @@ export default function ProductsList() {
               <h2 style={{ paddingTop: 0 }}>Cart Items</h2>
             )}
             {productState.products
-              .sort((a, b) => a.product.title - b.product.title)
+              .sort((a, b) => a.product.id - b.product.id)
               .map((product) => {
                 return (
                   <div
@@ -165,7 +165,7 @@ export default function ProductsList() {
                       <ProductQuan productDetails={product} />
                       <div style={{ marginLeft: "10px" }}>
                         {" "}
-                        ${product.product.price * product.quantity}
+                        ${(product.product.price * product.quantity).toFixed(2)}
                       </div>
                     </div>
                   </div>
@@ -179,10 +179,11 @@ export default function ProductsList() {
                 style={{ fontWeight: "bold", marginLeft: "10px", color: "red" }}
               >
                 $
-                {productState.products.reduce(
-                  (prev, curr) => prev + curr.product.price * curr.quantity,
-                  0
-                )}
+                {productState.products
+                  .reduce((prev, curr) => {
+                    return (prev += curr.product.price * curr.quantity);
+                  }, 0)
+                  .toFixed(2)}
               </span>
             </div>
           )}

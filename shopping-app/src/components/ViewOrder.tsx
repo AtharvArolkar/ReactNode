@@ -42,16 +42,18 @@ export default function ViewOrder() {
             >
               <div>{ord.product.title}</div>
               <div>{ord.quantity}</div>
-              <div>${ord.product.price * ord.quantity}</div>
+              <div>${(ord.product.price * ord.quantity).toFixed(2)}</div>
             </div>
           );
         })}
       </div>
       <h1 style={{ color: "red" }}>
         TOTAL:{" "}
-        {order.reduce((prev, curr) => {
-          return (prev += curr.product.price * curr.quantity);
-        }, 0)}
+        {order
+          .reduce((prev, curr) => {
+            return (prev += curr.product.price * curr.quantity);
+          }, 0)
+          .toFixed(2)}
       </h1>
     </div>
   );
